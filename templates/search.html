@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+    <style>
+        body
+        {
+            background-image: url("https://www.incimages.com/uploaded_files/image/970x450/getty_496612468_2000138820009280460_336567.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="/{{book.bookid}}">
+                    {{ book.title }} by {{ book.author }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<style>
+    body
+    {
+        background-image: url("https://digital.imprint.co.uk/wp-content/uploads/2017/08/general3.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
+</style>
+
+<main class="contianer p-5 p-3 mb-2 bg-secondary text-white">
+<form class="form-group" action="/review/{{ book.bookid }}" >
+  <div class="form-group">
+    <label for="formControlRange">Rating</label>
+    <input type="range" class="form-control-range" name="rating" min=0 max=5>
+  </div>
+
+  <div class="form-group">
+    <label>Book id</label>
+    <input type="text" class="form-control" name="book_id" rows="3"></input>
+  </div>
+
+  <div class="form-group">
+    <label>Comments</label>
+    <input type="text" class="form-control" name="comments" rows="3"/>
+  </div>
+
+  <div>
+  <input type="submit" value="submit"  />
+  </div>
+
+</form>
+</main>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<style>
+    body
+    {
+        background-image: url("https://digital.imprint.co.uk/wp-content/uploads/2017/08/general3.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
+
+    #rcorners1
+     {
+        border-radius: 50px;
+        background: #73AD21;
+        padding: 20px;
+     }
+</style>
+<h1> {{ book.title }} </h1>
+<h5> ISBN: {{ book.isbn }} <br/> Author: {{ book.author }} <br/> Rating count: {{ response['books'][0]['work_ratings_count'] }} <br/> Average Rating: {{ response['books'][0]['average_rating'] }}</h5>
+<br/>
+<br/>
+
+
+{% for review in reviews %}
+<main class="contianer p-5 p-3 mb-2 bg-dark text-white " id="rcorners1">
+    <h5>{{ review.username }}<h5>
+    <p class="text-success">   Rating: {{ review.rating }} <br/>   Comments: {{ review.comments }} <p>
+</main>
+<br/>
+{% endfor %}
+
+<br/>
+
+<main class="contianer p-5 p-3 mb-2 bg-secondary text-white">
+<form class="form-group" action="/review/{{ book.bookid }}" method="post" >
+  <div class="form-group">
+    <label for="formControlRange">Rating</label>
+    <input type="range" class="form-control-range" name="rating" min=0 max=5>
+  </div>
+
+  <div class="form-group">
+    <label>Comments</label>
+    <textarea type="text" class="form-control" name="comments" rows="3"></textarea>
+  </div>
+
+  <div>
+  <button type="submit" value="submit" >Submit</button>
+  </div>
+
+</form>
+</main>
+{% endblock %}

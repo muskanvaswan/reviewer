@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+        <style>
+            body
+            {
+                background-image: url("https://static01.nyt.com/images/2019/12/17/books/review/17fatbooks/17fatbooks-superJumbo.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center;
+                background-size: cover;
+            }
+            #rcorners1
+             {
+                border-radius: 25px;
+                background: #73AD21;
+                padding: 20px;
+             }
+
+        </style>
+
+        {% if session.user_id %}
+        <main class="contianer p-5 mb-2 bg-dark text-white " id="rcorners1">
+        <form action="/search" method="post">
+          <div class="form-group">
+            <label for="exampleInputEmail1" class= "text-info">Enter Title, Author or Isbn </label>
+            <input type="text" class="form-control" name="value">
+
+          </div>
+        </form>
+        </main
+        {% else%}
+        <centre>
+        <main class="contianer p-5 mb-2 bg-dark text-white text-center" id="rcorners1">
+        <h4> WELCOME TO THE REVIEWER </h4>
+        </main>
+        </centre>
+        {% endif %}
+
+{% endblock %}
